@@ -359,7 +359,11 @@ start-tileserver: init-dirs
 	@echo "* "
 	@echo "***********************************************************"
 	@echo " "
-	docker run $(DC_OPTS) -it --name tileserver-gl -v $$(pwd)/data:/data -p $(TPORT):$(TPORT) maptiler/tileserver-gl --port $(TPORT)
+	docker run $(DC_OPTS) -it --name tileserver-gl -v $$(pwd)/data:/data \
+	    -p $(TPORT):$(TPORT) \
+	    maptiler/tileserver-gl \
+	    --mbtiles india.mbtiles  \
+	    --port $(TPORT)
 
 .PHONY: start-postserve
 start-postserve: start-db
