@@ -68,7 +68,6 @@ endef
 
 # historically we have been using $(area) rather than $(AREA), so make both work
 area ?= $(AREA)
-area = haryana
 
 # Ensure the $(AREA) param is set, or try to automatically determine it based on available data files
 ifeq ($(strip $(area)),)
