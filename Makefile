@@ -67,8 +67,9 @@ endef
 #
 
 # historically we have been using $(area) rather than $(AREA), so make both work
-AREA = haryana
 area ?= $(AREA)
+area = haryana
+
 # Ensure the $(AREA) param is set, or try to automatically determine it based on available data files
 ifeq ($(strip $(area)),)
   # if $area is not set. set it to the name of the *.osm.pbf file, but only if there is only one
@@ -363,7 +364,7 @@ start-tileserver: init-dirs
 	docker run $(DC_OPTS) -it --name tileserver-gl -v $$(pwd)/data:/data \
 	    -p $(TPORT):$(TPORT) \
 	    maptiler/tileserver-gl \
-	    --mbtiles india.mbtiles  \
+	    --mbtiles $(area).mbtiles  \
 	    --port $(TPORT)
 
 .PHONY: start-postserve
