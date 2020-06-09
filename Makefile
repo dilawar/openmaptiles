@@ -67,6 +67,7 @@ endef
 #
 
 # historically we have been using $(area) rather than $(AREA), so make both work
+AREA = haryana
 area ?= $(AREA)
 # Ensure the $(AREA) param is set, or try to automatically determine it based on available data files
 ifeq ($(strip $(area)),)
